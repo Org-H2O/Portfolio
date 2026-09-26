@@ -18,7 +18,14 @@
   .cursor { display: block; }
 }
 
-/* over the hero name: hollow ring, plain orange */
+/* over links: hollow ring that keeps the difference blend,
+   so it inverts whatever it passes over, like the idle dot */
+.cursor.is-link {
+  background: transparent;
+  border: 2px solid var(--accent);
+}
+
+/* over the hero name: hollow ring, plain orange (clean outline mask) */
 .cursor.is-ring {
   background: transparent;
   border: 2px solid var(--accent);
