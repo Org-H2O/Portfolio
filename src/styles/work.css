@@ -1,0 +1,152 @@
+/* Work — pinned section, horizontal project track, filters, progress. */
+
+.work {
+  position: relative;
+  min-height: 100svh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-top: 4.5rem;
+}
+
+.work-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 var(--gutter);
+}
+
+.work-title {
+  font-weight: 900;
+  font-stretch: 125%;
+  font-size: clamp(2.2rem, 6vw, 5.5rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.work-title .o {
+  color: transparent;
+  -webkit-text-stroke: 2px #fff;
+}
+
+.work-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.filters { display: flex; gap: 0.5rem; }
+
+.filters button {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.55em 1.2em;
+  color: var(--ink);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.filters button:hover { color: var(--accent); }
+.filters button.on { background: var(--accent); color: #000; }
+.filters button.on:hover { color: #000; }
+
+.work-count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.work-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  width: max-content;
+  padding: 3rem var(--gutter) 4.5rem;
+  margin-block: auto;
+  will-change: transform;
+}
+
+.panel { flex: none; }
+
+/* whole panel is a link — the title warms up on hover */
+.panel h3 { transition: color 0.25s ease; }
+.panel:hover h3 { color: var(--accent); }
+
+/* media height fixed, width follows each image's aspect — no cropping */
+.panel-media { height: min(50vh, 520px); }
+
+.panel-media img { display: block; height: 100%; width: auto; }
+
+.panel-info {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  margin-top: 1.1rem;
+}
+
+.panel-num {
+  font-weight: 800;
+  font-stretch: 125%;
+  font-size: 1.5rem;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #fff;
+}
+
+.panel-info h3 {
+  font-weight: 800;
+  font-stretch: 125%;
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+  text-transform: uppercase;
+}
+
+.panel-tags {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.panel-cat {
+  margin-left: auto;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.work-progress {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 1.8rem;
+  height: 2px;
+}
+
+.work-progress i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@media (max-width: 720px) {
+  .work-head { flex-direction: column; align-items: flex-start; }
+  .work-controls { align-items: flex-start; }
+  .panel-media { height: 44vh; }
+}
+
+/* no-JS-motion fallback: plain horizontal swipe, no pin */
+@media (prefers-reduced-motion: reduce) {
+  .work { min-height: 0; }
+  .work-track { width: auto; overflow-x: auto; margin-block: 0; }
+  .work-progress { display: none; }
+}

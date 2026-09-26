@@ -1,0 +1,26 @@
+/* Custom cursor — orange dot, difference blend; ring state over hero name. */
+
+.cursor {
+  display: none; /* only precise pointers get it */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  mix-blend-mode: difference; /* inverts whatever is underneath */
+  pointer-events: none;
+  z-index: 100;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor { display: block; }
+}
+
+/* over the hero name: hollow ring, plain orange */
+.cursor.is-ring {
+  background: transparent;
+  border: 2px solid var(--accent);
+  mix-blend-mode: normal;
+}

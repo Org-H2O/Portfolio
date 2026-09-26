@@ -1,0 +1,40 @@
+/* Fixed top navigation. */
+
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.1rem var(--gutter);
+  background: var(--bg);
+}
+
+.brand {
+  font-weight: 800;
+  font-stretch: 125%;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.brand-mark { color: var(--accent); font-size: 0.72em; vertical-align: 0.45em; }
+
+.nav-links { display: flex; gap: clamp(1.4rem, 3.5vw, 3rem); }
+
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.nav-links a sup { color: var(--accent); font-size: 0.68em; margin-right: 0.4em; }
+.nav-links a:hover { color: var(--accent); }
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+}

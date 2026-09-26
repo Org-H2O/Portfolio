@@ -1,0 +1,37 @@
+/* Design tokens, reset, global primitives. */
+
+:root {
+  --bg: #000000;
+  --ink: #ffffff;
+  --accent: #ff4d00;
+  --muted: rgba(255, 255, 255, 0.6);
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Archivo", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent); color: #000; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #2a2a2a; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { background: none; border: none; color: inherit; cursor: pointer; font: inherit; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+/* hide the OS cursor on precise pointers — the orange dot replaces it */
+@media (hover: hover) and (pointer: fine) {
+  body, a, button { cursor: none; }
+}

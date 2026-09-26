@@ -1,0 +1,81 @@
+/* Hero: kicker, SVG name (fill + cursor-masked outline), meta row. */
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(4rem + 4vh) var(--gutter) 1.6rem;
+}
+
+.kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.3em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.kicker i { color: var(--accent); font-style: normal; font-size: 0.5em; }
+
+/* --- the big name (SVG: always fits, layers always aligned) --- */
+
+.hero-title { margin-block: auto; }
+
+.hero-title svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 56svh;
+  overflow: hidden;
+}
+
+.name-line {
+  font-family: "Archivo", sans-serif;
+  font-weight: 900;
+  font-stretch: 125%;
+}
+
+@media (max-width: 720px) {
+  #holeGroup text { stroke-width: 4; }
+}
+
+/* --- meta row --- */
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.arrow {
+  display: inline-block;
+  color: var(--accent);
+  font-style: normal;
+  animation: bob 2.2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow { animation: none; }
+}
+
+@media (max-width: 720px) {
+  .kicker { gap: 1em; font-size: 0.72rem; }
+  .meta { flex-direction: column; gap: 0.7rem; }
+  .meta-scroll { display: none; }
+}

@@ -1,0 +1,40 @@
+/* Marquee — the first white band, infinite CSS scroll. */
+
+.marquee {
+  background: #ffffff;
+  color: #000000;
+  padding-block: 1.1rem;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 26s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+  padding-right: 3.2rem;
+  font-weight: 800;
+  font-stretch: 125%;
+  font-size: clamp(1.4rem, 3.2vw, 2.6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.marquee-group i { color: var(--accent); font-style: normal; font-size: 0.42em; }
+
+.marquee-group .o {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #000;
+}
+
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
