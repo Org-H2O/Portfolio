@@ -116,7 +116,8 @@
 
 .shot-img {
   display: block;
-  width: 100%;
+  width: min(100%, 1080px); /* native capture width — never upscaled */
+  margin-inline: auto;
   height: auto;
 }
 
