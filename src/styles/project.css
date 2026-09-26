@@ -165,7 +165,7 @@
 }
 
 .p-next-link .arrow { font-style: normal; color: var(--accent); }
-.p-next-link:hover { color: var(--accent); }
+.p-next-link.is-snapped { color: var(--accent); }
 
 /* --- responsive --- */
 

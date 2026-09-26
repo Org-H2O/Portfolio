@@ -33,7 +33,6 @@
 }
 
 .nav-links a sup { color: var(--accent); font-size: 0.68em; margin-right: 0.4em; }
-.nav-links a:hover { color: var(--accent); }
 
 @media (max-width: 720px) {
   .nav-links { display: none; }

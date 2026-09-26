@@ -50,9 +50,8 @@
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.filters button:hover { color: var(--accent); }
+.filters button.is-snapped:not(.on) { color: var(--accent); }
 .filters button.on { background: var(--accent); color: #000; }
-.filters button.on:hover { color: #000; }
 
 .work-count {
   font-size: 0.8rem;
@@ -73,9 +72,9 @@
 
 .panel { flex: none; }
 
-/* whole panel is a link — the title warms up on hover */
+/* whole panel is a link — title warms up when the cursor snaps to it */
 .panel h3 { transition: color 0.25s ease; }
-.panel:hover h3 { color: var(--accent); }
+.panel.is-snapped h3 { color: var(--accent); }
 
 /* media height fixed, width follows each image's aspect — no cropping */
 .panel-media { height: min(50vh, 520px); }

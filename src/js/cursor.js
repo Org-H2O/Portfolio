@@ -32,8 +32,12 @@ export function initCursor({ gsap }) {
   let size = DOT_SIZE;                           // current circle diameter
   let overName = false;
 
-  const clickables = Array.from(document.querySelectorAll("a, button"));
+  // each candidate: the clickable plus the element the circle centers on
+  // (nav links: the label span, not the whole anchor incl. its number)
+  const clickables = Array.from(document.querySelectorAll("a, button"))
+    .map((el) => ({ el, at: el.querySelector("[data-snap]") || el }));
   let snapEl = null;         // element currently snapped to
+  let hotEl = null;          // element carrying the .is-snapped state
   let snapDist = Infinity;   // mouse distance to it (0 = pointer is on it)
   let snapX = 0, snapY = 0;  // point the circle locks onto
 
@@ -50,35 +54,44 @@ export function initCursor({ gsap }) {
   }
 
   const updateSnap = () => {
-    snapEl = null;
+    let found = null;
     let best = Infinity;
 
-    for (const el of clickables) {
-      const r = el.getBoundingClientRect();
+    for (const { el, at } of clickables) {
+      const r = at.getBoundingClientRect();
       if (!r.width && !r.height) continue;
 
-      // closest point of the element to the mouse
+      // closest point of the target to the mouse
       const nx = Math.max(r.left, Math.min(tx, r.right));
       const ny = Math.max(r.top, Math.min(ty, r.bottom));
       const d = Math.hypot(tx - nx, ty - ny);
 
       if (d < best) {
         best = d;
-        snapEl = el;
-        snapDist = d;
-        if (Math.max(r.width, r.height) < SNAP_CENTER_MAX) {
-          snapX = r.left + r.width / 2;  // small targets: lock dead center
-          snapY = r.top + r.height / 2;
-        } else {
-          snapX = nx;                    // big ones: hug the nearest edge
-          snapY = ny;
-        }
+        found = { el, nx, ny, rect: r };
       }
     }
 
-    if (!snapEl || best > SNAP_RADIUS) {
+    if (found && best <= SNAP_RADIUS) {
+      snapEl = found.el;
+      snapDist = best;
+      if (Math.max(found.rect.width, found.rect.height) < SNAP_CENTER_MAX) {
+        snapX = found.rect.left + found.rect.width / 2; // small: dead center
+        snapY = found.rect.top + found.rect.height / 2;
+      } else {
+        snapX = found.nx;                               // big: nearest edge
+        snapY = found.ny;
+      }
+    } else {
       snapEl = null;
       snapDist = Infinity;
+    }
+
+    // hover state follows the snap, not the invisible pointer
+    if (snapEl !== hotEl) {
+      if (hotEl) hotEl.classList.remove("is-snapped");
+      if (snapEl) snapEl.classList.add("is-snapped");
+      hotEl = snapEl;
     }
   };
 
