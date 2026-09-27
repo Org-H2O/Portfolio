@@ -236,8 +236,7 @@ const DICT = {
 
     "work.title": "Travaux <span class='o'>sélectionnés</span>",
     "f.all": "Tous",
-    "f.ux": "UX",
-    "f.ui": "UI",
+    "f.uxui": "UX/UI",
     "f.graphic": "Graphisme",
     "f.d3": "3D",
 
