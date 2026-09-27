@@ -86,17 +86,34 @@
   display: flex;
   align-items: center;
   gap: clamp(1.5rem, 4vw, 4rem);
-  width: max-content;
+  width: auto;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
   padding: 3rem var(--gutter) 4.5rem;
   margin-block: auto;
-  will-change: transform;
 }
+
+.work-track::-webkit-scrollbar { display: none; }
 
 .panel { flex: none; }
 
 /* whole panel is a link — title warms up when the cursor snaps to it */
 .panel h3 { transition: color 0.25s ease; }
 .panel.is-snapped h3 { color: var(--accent); }
+
+/* no grab cursor — the orange dot stays; just kill drag side effects */
+.work-track {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.work-track img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.work-track.is-dragging .panel { pointer-events: none; }
 
 /* media height fixed, width follows each image's aspect — no cropping */
 .panel-media { height: min(50vh, 520px); }
@@ -105,6 +122,7 @@
 
 /* paper-stack cover — portrait pieces layered like scattered prints */
 .panel-media--stack {
+  width: 100%;
   position: relative;
   height: min(50vh, 520px);
   aspect-ratio: 10 / 11;
@@ -119,12 +137,12 @@
 
 .panel-media--stack .stack-back {
   left: 50%;
-  transform: translate(-57%, -49%) rotate(-8deg);
+  transform: translate(-75%, -55%) rotate(-8deg);
 }
 
 .panel-media--stack .stack-front {
   left: 50%;
-  transform: translate(-33%, -54%) rotate(2.5deg);
+  transform: translate(-25%, -55%) rotate(2.5deg);
 }
 
 .panel-info {

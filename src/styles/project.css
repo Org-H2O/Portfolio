@@ -95,7 +95,11 @@
 
 .p-h2 .o {
   color: transparent;
-  -webkit-text-stroke: 1.5px currentColor;
+  -webkit-text-stroke: 1.5px #fff;
+}
+
+.light .p-h2 .o {
+  -webkit-text-stroke-color: #000;
 }
 
 .p-copy {
@@ -164,10 +168,28 @@
   font-stretch: 125%;
   font-size: 1.4rem;
   color: transparent;
-  -webkit-text-stroke: 1.5px currentColor;
+  -webkit-text-stroke: 1.5px #fff;
+}
+
+.light .shot-num {
+  -webkit-text-stroke-color: #000;
 }
 
 .shot-cat { margin-left: auto; color: var(--accent); }
+
+/* 2-up row for phone screens — native capture width, never upscaled */
+.shot-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.shot-row .shot { flex: 0 1 412px; margin: 0; }
+.shot-row .shot-img { width: 100%; }
+
+/* single phone shot kept at capture width */
+.shot--phone .shot-img { width: min(100%, 412px); }
 
 /* --- next / back --- */
 

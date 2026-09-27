@@ -1,5 +1,5 @@
-/* Work section: pinned horizontal scrub on desktop, native swipe carousel
-   with dots on mobile. Filters rebuild the track in both modes. */
+/* Work section: horizontal project track — drag to scroll on desktop,
+   native snap swipe with dots on mobile. Filters rebuild the track. */
 
 export function initWork({ gsap, ScrollTrigger }) {
   const work = document.querySelector(".work");
@@ -22,105 +22,159 @@ export function initWork({ gsap, ScrollTrigger }) {
   };
   setCount(1);
 
-  let rebuildDots = null; // set by the mobile context
+  // progress bar + counter follow the track's scroll position (both modes)
+  const update = () => {
+    const max = track.scrollWidth - track.clientWidth;
+    bar.style.transform = "scaleX(" + (max > 0 ? track.scrollLeft / max : 0) + ")";
 
-  const mm = gsap.matchMedia();
-
-  // desktop — pinned viewport, projects scrub horizontally
-  mm.add("(min-width: 1024px)", () => {
-    // few panels → short/no distance; clamp so the pin never goes negative
-    const dist = () => Math.max(0, track.scrollWidth - innerWidth);
-
-    gsap.to(track, {
-      x: () => -dist(),
-      ease: "none",
-      scrollTrigger: {
-        trigger: work,
-        start: "top top",
-        end: () => "+=" + dist(),
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          bar.style.transform = "scaleX(" + self.progress + ")";
-          setCount(Math.round(self.progress * (panels.length - 1)) + 1);
-        },
-      },
+    // active index = panel closest to the track's center
+    const mid = track.getBoundingClientRect().left + track.clientWidth / 2;
+    let idx = 0;
+    let best = Infinity;
+    panels.forEach((p, i) => {
+      if (p.style.display === "none") return;
+      const r = p.getBoundingClientRect();
+      const d = Math.abs(r.left + r.width / 2 - mid);
+      if (d < best) {
+        best = d;
+        idx = i;
+      }
     });
-  });
+    setCount(idx + 1);
 
-  // mobile — native overflow swipe, snap per panel, dots + counter follow scroll
-  mm.add("(max-width: 1023px)", () => {
-    const dotsWrap = document.getElementById("workDots");
-    if (!dotsWrap) return;
+    dots.forEach((d, i) => d.classList.toggle("on", i === idx));
+  };
 
-    const visible = () => panels.filter((p) => p.style.display !== "none");
-    let dots = [];
+  track.addEventListener("scroll", update, { passive: true });
+  addEventListener("resize", update);
 
-    const scrollToPanel = (panel) => {
-      const r = panel.getBoundingClientRect();
-      const t = track.getBoundingClientRect();
-      track.scrollTo({
-        left:
-          track.scrollLeft +
-          (r.left - t.left) -
-          (track.clientWidth - r.width) / 2,
-        behavior: "smooth",
-      });
-    };
+  // mobile — snap dots
+  const dotsWrap = document.getElementById("workDots");
+  let dots = [];
 
-    const buildDots = () => {
-      dotsWrap.innerHTML = "";
-      dots = visible().map((panel, i) => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.setAttribute("aria-label", "Go to project " + (i + 1));
-        b.addEventListener("click", () => scrollToPanel(panel));
-        dotsWrap.appendChild(b);
-        return b;
-      });
-      update();
-    };
+  const visible = () => panels.filter((p) => p.style.display !== "none");
 
-    // active dot = panel closest to the track's center
-    const update = () => {
-      const vis = visible();
-      const mid = track.getBoundingClientRect().left + track.clientWidth / 2;
-
-      let idx = 0;
-      let best = Infinity;
-      vis.forEach((panel, i) => {
+  const buildDots = () => {
+    dotsWrap.innerHTML = "";
+    dots = visible().map((panel, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", "Go to project " + (i + 1));
+      b.addEventListener("click", () => {
         const r = panel.getBoundingClientRect();
-        const d = Math.abs(r.left + r.width / 2 - mid);
-        if (d < best) {
-          best = d;
-          idx = i;
-        }
+        const t = track.getBoundingClientRect();
+        track.scrollTo({
+          left:
+            track.scrollLeft +
+            (r.left - t.left) -
+            (track.clientWidth - r.width) / 2,
+          behavior: "smooth",
+        });
       });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+    update();
+  };
 
-      setCount(idx + 1);
-      dots.forEach((d, i) => d.classList.toggle("on", i === idx));
+  // desktop — grab-and-drag with momentum release
+  const mm = gsap.matchMedia();
+  mm.add("(min-width: 1024px)", () => {
+    let down = false;
+    let dragged = false;      // this gesture moved the track
+    let lastDragEnd = 0;      // timestamp — click events right after a drag are swallowed
+    let startX = 0;
+    let startLeft = 0;
+    let lastX = 0;
+    let lastT = 0;
+    let velocity = 0;         // px per ms, positive = dragging left
+    let rafId = 0;
 
-      const max = track.scrollWidth - track.clientWidth;
-      bar.style.transform = "scaleX(" + (max > 0 ? track.scrollLeft / max : 0) + ")";
+    const stopMomentum = () => {
+      cancelAnimationFrame(rafId);
+      rafId = 0;
     };
 
-    track.addEventListener("scroll", update, { passive: true });
-    addEventListener("resize", update);
-    buildDots();
-    rebuildDots = buildDots;
+    const glide = () => {
+      velocity *= 0.94; // friction per frame
+      if (Math.abs(velocity) < 0.02) {
+        rafId = 0;
+        return;
+      }
+      track.scrollLeft += velocity * 16;
+      rafId = requestAnimationFrame(glide);
+    };
+
+    const onDown = (e) => {
+      if (e.button !== 0) return;
+      e.preventDefault(); // no text selection, no native image drag
+      stopMomentum();
+      down = true;
+      dragged = false;
+      startX = lastX = e.clientX;
+      startLeft = track.scrollLeft;
+      lastT = performance.now();
+      velocity = 0;
+    };
+
+    const onMove = (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      if (!dragged && Math.abs(dx) > 6) {
+        dragged = true;
+        track.classList.add("is-dragging");
+      }
+      if (!dragged) return;
+
+      const now = performance.now();
+      const dt = now - lastT;
+      if (dt > 0) velocity = -(e.clientX - lastX) / dt;
+      lastX = e.clientX;
+      lastT = now;
+
+      track.scrollLeft = startLeft - dx;
+    };
+
+    const onUp = () => {
+      if (!down) return;
+      down = false;
+      if (dragged) {
+        lastDragEnd = performance.now();
+        if (Math.abs(velocity) > 0.05) rafId = requestAnimationFrame(glide);
+      }
+      dragged = false;
+      track.classList.remove("is-dragging");
+    };
+
+    // a drag must never end in a click-through, even if the click fires late
+    const onClickCapture = (e) => {
+      if (performance.now() - lastDragEnd < 150) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    track.addEventListener("mousedown", onDown);
+    addEventListener("mousemove", onMove);
+    addEventListener("mouseup", onUp);
+    track.addEventListener("click", onClickCapture, true);
 
     return () => {
-      track.removeEventListener("scroll", update);
-      removeEventListener("resize", update);
-      dotsWrap.innerHTML = "";
-      dots = [];
-      rebuildDots = null;
+      stopMomentum();
+      track.removeEventListener("mousedown", onDown);
+      removeEventListener("mousemove", onMove);
+      removeEventListener("mouseup", onUp);
+      track.removeEventListener("click", onClickCapture, true);
+      track.classList.remove("is-dragging");
+      down = false;
+      dragged = false;
     };
   });
 
-  // filters — hide/show panels, then re-measure whichever mode is active
+  buildDots();
+  update();
+
+  // filters — hide/show panels, then rebuild dots + re-measure
   const buttons = document.querySelectorAll(".filters button");
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -129,11 +183,11 @@ export function initWork({ gsap, ScrollTrigger }) {
       panels.forEach((p) => {
         p.style.display = (f === "all" || p.dataset.cat === f) ? "" : "none";
       });
-      if (rebuildDots) rebuildDots();
-      ScrollTrigger.refresh();
+      buildDots();
+      update();
     });
   });
 
   // re-measure once images/fonts have settled
-  addEventListener("load", () => ScrollTrigger.refresh());
+  addEventListener("load", () => update());
 }

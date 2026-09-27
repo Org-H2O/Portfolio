@@ -17,9 +17,9 @@
   <nav class="nav">
     <a class="brand" href="#top">HH<span class="brand-mark">©</span></a>
     <ul class="nav-links">
-      <li><a href="#work"><sup>01</sup> <span data-snap data-i18n="nav.work">Work</span></a></li>
-      <li><a href="#voice"><sup>02</sup> <span data-snap data-i18n="nav.voice">Voice</span></a></li>
-      <li><a href="#about"><sup>03</sup> <span data-snap data-i18n="nav.about">About</span></a></li>
+      <li><a href="#about"><sup>01</sup> <span data-snap data-i18n="nav.about">About</span></a></li>
+      <li><a href="#work"><sup>02</sup> <span data-snap data-i18n="nav.work">Work</span></a></li>
+      <li><a href="#voice"><sup>03</sup> <span data-snap data-i18n="nav.voice">Voice</span></a></li>
       <li><a href="#contact"><sup>04</sup> <span data-snap data-i18n="nav.contact">Contact</span></a></li>
     </ul>
     <button class="lang-toggle" id="langToggle" type="button" data-snap aria-label="Switch to French">
@@ -74,7 +74,38 @@
       </div>
     </section>
 
-    <!-- ============ MARQUEE (white band) ============ -->
+    <!-- ============ ABOUT (white) ============ -->
+    <section class="section light about" id="about">
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="assets/about/portrait.webp" width="922" height="1152"
+               alt="Hajar Haddouche on stage with a microphone at the CMC RSK forum" />
+        </div>
+        <div>
+          <h2 class="sec-title" data-i18n="about.title">About</h2>
+          <p class="about-copy" data-i18n="about.p1">
+            I studied UX/UI design at Cité des Métiers et des Compétences (CMC).
+            During my internship at International School El Jadida, I took three
+            mobile apps and a web app from user research and wireframes to a design
+            system and full UI in Figma.
+          </p>
+          <p class="about-copy" data-i18n="about.p2">
+            3D and voice are part of the same practice. I model and texture
+            scenes in Blender, train interns on 3D basics, and hosted the two-day
+            Arabic radio broadcast at the first CMC RSK forum in Rabat.
+          </p>
+          <ul class="p-facts">
+            <li><span data-i18n="about.f1l">Study</span><span data-i18n="about.f1v">UX/UI Design, CMC RSK</span></li>
+            <li><span data-i18n="about.f2l">Languages</span><span data-i18n="about.f2v">Arabic ● French ● Turkish ● English</span></li>
+            <li><span data-i18n="about.f3l">Toolkit</span><span data-i18n="about.f3v">Figma ● Blender ● Catia</span></li>
+          </ul>
+          <a class="cv-btn" href="CV%20Hajar%20Haddouche.pdf" download data-snap><span data-i18n="about.cv">Download CV</span> <span class="arrow">↓</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE (white band, black strip above) ============ -->
+    <div class="strip" aria-hidden="true"></div>
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
         <div class="marquee-group">
@@ -92,7 +123,7 @@
       </div>
     </div>
 
-    <!-- ============ WORK (pinned, horizontal) ============ -->
+    <!-- ============ WORK (horizontal, drag) ============ -->
     <section class="work" id="work">
       <header class="work-head">
         <h2 class="work-title" data-i18n="work.title">Selected <span class="o">Work</span></h2>
@@ -114,7 +145,7 @@
       <div class="work-track" id="workTrack">
         <a class="panel" href="projects/recettes-mondiales.html" data-cat="ux">
           <div class="panel-media">
-            <img src="assets/projects/recettes-mondiales/cover.png" width="1091" height="806"
+            <img src="assets/projects/recettes-mondiales/cover.webp" width="1091" height="806"
                  alt="Recettes Mondiales — landing page hero" />
           </div>
           <div class="panel-info">
@@ -129,8 +160,8 @@
 
         <a class="panel" href="projects/posters.html" data-cat="graphic">
           <div class="panel-media panel-media--stack">
-            <img class="stack-back" src="assets/projects/posters/vogue.jpg" width="2400" height="3000" alt="" />
-            <img class="stack-front" src="assets/projects/posters/movie.jpg" width="1350" height="1800"
+            <img class="stack-back" src="assets/projects/posters/vogue.webp" width="1280" height="1600" alt="" />
+            <img class="stack-front" src="assets/projects/posters/movie.webp" width="1200" height="1600"
                  alt="Posters &amp; Covers — stacked prints, film poster and editorial cover" />
           </div>
           <div class="panel-info">
@@ -140,6 +171,36 @@
               <p class="panel-tags" data-i18n="p2.tags">Graphic ● Print ● Editorial</p>
             </div>
             <span class="panel-cat" data-i18n="p2.cat">Graphic</span>
+          </div>
+        </a>
+
+        <a class="panel" href="projects/waypoint.html" data-cat="ux">
+          <div class="panel-media">
+            <img src="assets/projects/waypoint/cover.webp" width="1600" height="1017"
+                 alt="WayPoint — school transportation management, admin login" />
+          </div>
+          <div class="panel-info">
+            <span class="panel-num">03</span>
+            <div>
+              <h3>WayPoint</h3>
+              <p class="panel-tags" data-i18n="p3.tags">UX/UI ● Admin ● Mobile</p>
+            </div>
+            <span class="panel-cat" data-i18n="p3.cat">UX/UI</span>
+          </div>
+        </a>
+
+        <a class="panel" href="projects/3d.html" data-cat="3d">
+          <div class="panel-media">
+            <img src="assets/projects/3d/cover.webp" width="1375" height="768"
+                 alt="3D Design — knife, cube, drone and pumpkin models" />
+          </div>
+          <div class="panel-info">
+            <span class="panel-num">04</span>
+            <div>
+              <h3>3D Design</h3>
+              <p class="panel-tags" data-i18n="p4.tags">3D ● CATIA ● Blender</p>
+            </div>
+            <span class="panel-cat" data-i18n="p4.cat">3D</span>
           </div>
         </a>
       </div>
@@ -153,62 +214,33 @@
       <p class="voice-lead" data-i18n="voice.lead">[ Placeholder — one line on her voice: tone, range, what she reads. ]</p>
 
       <ul class="demo-list">
-        <!-- TODO: drop real audio into assets/voice/ and turn rows into players -->
-        <li class="demo">
+        <li class="demo demo--player" data-src="assets/voice/elisa-lam.mp3">
           <span class="demo-num">01</span>
-          <div>
-            <h3 data-i18n="v1.title">Commercial demo</h3>
-            <p class="demo-tags" data-i18n="v1.tags">[ Tags — brands, tone, language ]</p>
+          <button class="demo-play" type="button" data-snap aria-label="Play — True crime narration">
+            <i class="ic-play"></i>
+            <i class="ic-pause"></i>
+          </button>
+          <div class="demo-body">
+            <h3 data-i18n="v1.title">True crime narration</h3>
+            <p class="demo-tags" data-i18n="v1.tags">Elisa Lam case ● Documentary</p>
+            <div class="demo-track"><i></i></div>
           </div>
-          <span class="demo-state" data-i18n="voice.soon">Coming soon</span>
+          <span class="demo-time">0:00 / 0:00</span>
         </li>
-        <li class="demo">
+        <li class="demo demo--player" data-src="assets/voice/ibn-battuta.mp3">
           <span class="demo-num">02</span>
-          <div>
-            <h3 data-i18n="v2.title">Narration demo</h3>
-            <p class="demo-tags" data-i18n="v2.tags">[ Tags — documentary, e-learning ]</p>
+          <button class="demo-play" type="button" data-snap aria-label="Play — Educational storytelling">
+            <i class="ic-play"></i>
+            <i class="ic-pause"></i>
+          </button>
+          <div class="demo-body">
+            <h3 data-i18n="v2.title">Educational storytelling</h3>
+            <p class="demo-tags" data-i18n="v2.tags">Ibn Battuta ● Young listeners</p>
+            <div class="demo-track"><i></i></div>
           </div>
-          <span class="demo-state" data-i18n="voice.soon">Coming soon</span>
-        </li>
-        <li class="demo">
-          <span class="demo-num">03</span>
-          <div>
-            <h3 data-i18n="v3.title">Character demo</h3>
-            <p class="demo-tags" data-i18n="v3.tags">[ Tags — animation, games ]</p>
-          </div>
-          <span class="demo-state" data-i18n="voice.soon">Coming soon</span>
+          <span class="demo-time">0:00 / 0:00</span>
         </li>
       </ul>
-    </section>
-
-    <!-- ============ ABOUT (dark) ============ -->
-    <section class="section about" id="about">
-      <div class="about-grid">
-        <div class="about-photo">
-          <img src="assets/about/portrait.png" width="922" height="1152"
-               alt="Hajar Haddouche on stage with a microphone at the CMC RSK forum" />
-        </div>
-        <div>
-          <h2 class="sec-title" data-i18n="about.title">About</h2>
-          <p class="about-copy" data-i18n="about.p1">
-            Hajar studies UX/UI design at Cité des Métiers et des Compétences (CMC).
-            During her internship at International School El Jadida, she took three
-            mobile apps and a web app from user research and wireframes to a design
-            system and full UI in Figma.
-          </p>
-          <p class="about-copy" data-i18n="about.p2">
-            3D and voice are part of the same practice. She models and textures
-            scenes in Blender, trains interns on 3D basics, and hosted the two-day
-            Arabic radio broadcast at the first CMC RSK forum in Rabat.
-          </p>
-          <ul class="p-facts">
-            <li><span data-i18n="about.f1l">Study</span><span data-i18n="about.f1v">UX/UI Design, CMC RSK</span></li>
-            <li><span data-i18n="about.f2l">Languages</span><span data-i18n="about.f2v">Arabic ● French ● Turkish ● English</span></li>
-            <li><span data-i18n="about.f3l">Toolkit</span><span data-i18n="about.f3v">Figma ● Blender ● Catia</span></li>
-          </ul>
-          <a class="cv-btn" href="CV%20Hajar%20Haddouche.pdf" download data-snap><span data-i18n="about.cv">Download CV</span> <span class="arrow">↓</span></a>
-        </div>
-      </div>
     </section>
 
     <!-- ============ CONTACT (white) ============ -->

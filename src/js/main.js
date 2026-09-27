@@ -6,6 +6,7 @@ import { initCursor } from "./cursor.js";
 import { initIntro } from "./intro.js";
 import { initWork } from "./work.js";
 import { initLightbox } from "./lightbox.js";
+import { initVoice } from "./voice.js";
 import { initI18n } from "./i18n.js";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +16,7 @@ const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const lenis = initSmoothScroll({ gsap, ScrollTrigger, Lenis, reduced });
 initCursor({ gsap });
 initLightbox({ lenis });
+initVoice();
 initI18n({ ScrollTrigger }); // before intro/work — text must be final before measuring
 
 if (!reduced) {

@@ -30,28 +30,32 @@ const DICT = {
     "p1.cat": "UX/UI",
     "p2.tags": "Graphic ● Print ● Editorial",
     "p2.cat": "Graphic",
+    "p3.tags": "UX/UI ● Admin ● Mobile",
+    "p3.cat": "UX/UI",
+    "p4.tags": "3D ● CATIA ● Blender",
+    "p4.cat": "3D",
 
     "voice.title": "Voice <span class='o'>Over</span>",
-    "voice.lead": "[ Placeholder — one line on her voice: tone, range, what she reads. ]",
-    "v1.title": "Commercial demo",
-    "v1.tags": "[ Tags — brands, tone, language ]",
-    "v2.title": "Narration demo",
-    "v2.tags": "[ Tags — documentary, e-learning ]",
+    "voice.lead": "Two sides of my voice: dark narration for true crime, and stories for young listeners.",
+    "v1.title": "True crime narration",
+    "v1.tags": "Elisa Lam case ● Documentary",
+    "v2.title": "Educational storytelling",
+    "v2.tags": "Ibn Battuta ● Young listeners",
     "v3.title": "Character demo",
     "v3.tags": "[ Tags — animation, games ]",
     "voice.soon": "Coming soon",
 
     "about.title": "About",
     "about.p1":
-      "Hajar studies UX/UI design at Cité des Métiers et des Compétences (CMC). " +
-      "During her internship at International School El Jadida, she took three " +
+      "I studied UX/UI design at Cité des Métiers et des Compétences (CMC). " +
+      "During my internship at International School El Jadida, I took three " +
       "mobile apps and a web app from user research and wireframes to a design " +
       "system and full UI in Figma.",
     "about.p2":
-      "3D and voice are part of the same practice. She models and textures " +
-      "scenes in Blender, trains interns on 3D basics, and hosted the two-day " +
+      "3D and voice are part of the same practice. I model and texture " +
+      "scenes in Blender, train interns on 3D basics, and hosted the two-day " +
       "Arabic radio broadcast at the first CMC RSK forum in Rabat.",
-    "about.f1l": "Study",
+    "about.f1l": "Education",
     "about.f1v": "UX/UI Design, CMC RSK",
     "about.f2l": "Languages",
     "about.f2v": "Arabic ● French ● Turkish ● English",
@@ -67,6 +71,87 @@ const DICT = {
     "back.label": "More case studies coming soon",
     "back.link": "Back to all work ",
 
+    "wp.k1": "UX/UI Design",
+    "wp.k2": "Internship",
+    "wp.m1": "Role — <b>UX/UI Designer</b>",
+    "wp.m2": "Scope — <b>Parent app &amp; web admin</b>",
+    "wp.m3": "Platform — <b>Mobile + Web</b>",
+    "wp.lead":
+      "WayPoint is a school transportation management system I designed " +
+      "during my internship at International School El Jadida: a parent app " +
+      "for live pickup tracking, a web admin for the school, and a teacher " +
+      "companion — built on one design system.",
+    "wp.f1l": "Role",
+    "wp.f1v": "UX/UI Design",
+    "wp.f2l": "Deliverables",
+    "wp.f2v": "Parent app, admin &amp; design system",
+    "wp.f3l": "Status",
+    "wp.f3v": "Design delivered",
+    "wp.f4l": "Palette",
+    "wp.f4v": "Blue &amp; white",
+    "wp.f5l": "Year",
+    "wp.h2a": "The parent<br /><span class=\"o\">app</span>",
+    "wp.copyA":
+      "Parents open the app to today's schedule, their linked children, " +
+      "and one big action: Start Pickup. From there the screen becomes a " +
+      "live tracker: distance and ETA update as they get close to the school.",
+    "wp.h2b": "How pickup<br /><span class=\"o\">works</span>",
+    "wp.copyB":
+      "It all runs on the geofence: a parent opens the app, the system " +
+      "checks their GPS against the zone around the school, and computes " +
+      "the ETA. Under five minutes out, the teacher gets the alert. " +
+      "No manual check-in, no lost phone calls.",
+    "wp.h2c": "The school<br /><span class=\"o\">side</span>",
+    "wp.copyC":
+      "The web admin runs the whole school: students, parents, classes, " +
+      "schedules and pickup logs. Every pickup becomes a number — total " +
+      "count, average duration, fastest and slowest — so the school can " +
+      "spot the slow ones. Teachers get a lighter companion app with the " +
+      "class list and alerts.",
+    "wp.h2d": "One design<br /><span class=\"o\">system</span>",
+    "wp.copyD":
+      "Every screen, from parent app to admin, comes from the same " +
+      "component library: colors, type scale, spacing, forms and cards " +
+      "defined once, reused everywhere.",
+    "d3.k1": "3D Design",
+    "d3.k2": "Modeling",
+    "d3.k3": "Training",
+    "d3.m1": "Tools — <b>CATIA &amp; Blender</b>",
+    "d3.m2": "Focus — <b>Hard-surface modeling</b>",
+    "d3.lead":
+      "I model in two tools: CATIA for precision parts, Blender for " +
+      "anything that needs to feel alive. These are the pieces I keep " +
+      "coming back to.",
+    "d3.f1l": "Tools",
+    "d3.f1v": "CATIA ● Blender",
+    "d3.f2l": "Focus",
+    "d3.f2v": "Hard-surface modeling",
+    "d3.f3l": "Also",
+    "d3.f3v": "Training interns on 3D basics",
+    "d3.h2a": "CATIA<br /><span class=\"o\">precision</span>",
+    "d3.copyA":
+      "CATIA is where I learned 3D: exact dimensions, clean sketches, " +
+      "parts that could actually be manufactured. A combat knife, a " +
+      "quadcopter drone, and a cube study built from one repeated " +
+      "profile.",
+    "d3.h2b": "Blender<br /><span class=\"o\">character work</span>",
+    "d3.copyB":
+      "A little ghost, modeled and shaped vertex by vertex in Blender. " +
+      "Small piece, but it taught me more about topology than any " +
+      "tutorial.",
+    "d3.cap1": "Combat knife",
+    "d3.cap2": "Nested cube study",
+    "d3.cap3": "Quadcopter drone",
+    "d3.cap4": "Ghost character",
+    "wp.cap1": "Parent home",
+    "wp.cap2": "Live pickup mode",
+    "wp.cap3": "My children",
+    "wp.cap4": "Linking a child",
+    "wp.cap5": "Geofence zones",
+    "wp.cap6": "Pickup logs dashboard",
+    "wp.cap7": "Teacher companion",
+    "wp.cap8": "Component sheet",
+
     "rec.k1": "UX/UI Design",
     "rec.k2": "Concept",
     "rec.m1": "Role — <b>UX/UI Designer</b>",
@@ -74,7 +159,7 @@ const DICT = {
     "rec.m3": "Platform — <b>Web + Mobile</b>",
     "rec.lead":
       "Recettes Mondiales is a concept for a recipe discovery app: " +
-      "taste-tested dishes from 195 countries and cultures. Hajar designed " +
+      "taste-tested dishes from 195 countries and cultures. I designed " +
       "the landing page, hero to footer.",
     "rec.f1l": "Role",
     "rec.f1v": "UX/UI Design",
@@ -160,27 +245,31 @@ const DICT = {
     "p1.cat": "UX/UI",
     "p2.tags": "Graphisme ● Print ● Éditorial",
     "p2.cat": "Graphisme",
+    "p3.tags": "UX/UI ● Admin ● Mobile",
+    "p3.cat": "UX/UI",
+    "p4.tags": "3D ● CATIA ● Blender",
+    "p4.cat": "3D",
 
     "voice.title": "Voix <span class='o'>off</span>",
-    "voice.lead": "[ Placeholder — une ligne sur sa voix : ton, registre, ce qu'elle lit. ]",
-    "v1.title": "Démo commerciale",
-    "v1.tags": "[ Mots-clés — marques, ton, langue ]",
-    "v2.title": "Démo narration",
-    "v2.tags": "[ Mots-clés — documentaire, e-learning ]",
+    "voice.lead": "Deux facettes de ma voix : la narration sombre pour le true crime, et des histoires pour le jeune public.",
+    "v1.title": "Narration true crime",
+    "v1.tags": "L'affaire Elisa Lam ● Documentaire",
+    "v2.title": "Conte éducatif",
+    "v2.tags": "Ibn Battuta ● Jeune public",
     "v3.title": "Démo personnages",
     "v3.tags": "[ Mots-clés — animation, jeux vidéo ]",
     "voice.soon": "Bientôt",
 
     "about.title": "À propos",
     "about.p1":
-      "Hajar étudie le design UX/UI à la Cité des Métiers et des Compétences (CMC). " +
-      "Durant son stage à l'International School El Jadida, elle a mené trois " +
+      "J'ai étudié le design UX/UI à la Cité des Métiers et des Compétences (CMC). " +
+      "Durant mon stage à l'International School El Jadida, j'ai mené trois " +
       "applications mobiles et une application web de la recherche utilisateur " +
       "et des wireframes jusqu'au design system et à l'interface complète sur Figma.",
     "about.p2":
-      "La 3D et la voix off s'inscrivent dans la même pratique. Elle modélise et " +
-      "texture des scènes sur Blender, forme des stagiaires aux bases de la 3D, " +
-      "et a animé l'émission radio en arabe pendant deux jours lors de la " +
+      "La 3D et la voix off s'inscrivent dans la même pratique. Je modélise et " +
+      "texture des scènes sur Blender, je forme des stagiaires aux bases de la 3D, " +
+      "et j'ai animé l'émission radio en arabe pendant deux jours lors de la " +
       "première édition du forum CMC RSK à Rabat.",
     "about.f1l": "Formation",
     "about.f1v": "Design UX/UI, CMC RSK",
@@ -198,6 +287,90 @@ const DICT = {
     "back.label": "D'autres études de cas arrivent bientôt",
     "back.link": "Retour aux projets ",
 
+    "wp.k1": "Design UX/UI",
+    "wp.k2": "Stage",
+    "wp.m1": "Rôle — <b>Designer UX/UI</b>",
+    "wp.m2": "Périmètre — <b>Appli parents &amp; admin web</b>",
+    "wp.m3": "Plateforme — <b>Mobile + Web</b>",
+    "wp.lead":
+      "WayPoint est un système de gestion du transport scolaire que j'ai " +
+      "conçu durant mon stage à l'International School El Jadida : une " +
+      "appli parents pour le suivi des ramassages en direct, un admin web " +
+      "pour l'école et un compagnon enseignant — le tout sur un seul " +
+      "design system.",
+    "wp.f1l": "Rôle",
+    "wp.f1v": "Design UX/UI",
+    "wp.f2l": "Livrables",
+    "wp.f2v": "Appli parents, admin &amp; design system",
+    "wp.f3l": "Statut",
+    "wp.f3v": "Design livré",
+    "wp.f4l": "Palette",
+    "wp.f4v": "Bleu &amp; blanc",
+    "wp.f5l": "Année",
+    "wp.h2a": "L'appli<br /><span class=\"o\">parents</span>",
+    "wp.copyA":
+      "Les parents ouvrent l'appli pour le planning du jour, leurs enfants " +
+      "liés, et une seule grande action : Start Pickup. L'écran devient " +
+      "alors un suivi en direct : la distance et l'ETA s'actualisent à " +
+      "l'approche de l'école.",
+    "wp.h2b": "Comment marche<br /><span class=\"o\">le ramassage</span>",
+    "wp.copyB":
+      "Tout repose sur la géofence : un parent ouvre l'appli, le système " +
+      "compare son GPS à la zone autour de l'école et calcule l'ETA. " +
+      "À moins de cinq minutes de l'école, l'enseignant reçoit l'alerte. " +
+      "Sans pointage manuel, sans appels perdus.",
+    "wp.h2c": "Le côté<br /><span class=\"o\">école</span>",
+    "wp.copyC":
+      "L'admin web pilote toute l'école : élèves, parents, classes, " +
+      "plannings et journaux de ramassage. Chaque ramassage devient un " +
+      "chiffre — total, durée moyenne, plus rapide, plus lent — pour " +
+      "repérer les ramassages les plus lents. Les enseignants reçoivent " +
+      "une appli plus légère avec la liste de classe et les alertes.",
+    "wp.h2d": "Un seul design<br /><span class=\"o\">system</span>",
+    "wp.copyD":
+      "Chaque écran, de l'appli parents à l'admin, sort de la même " +
+      "bibliothèque de composants : couleurs, échelle typographique, " +
+      "espacements, formulaires et cartes définis une fois, réutilisés " +
+      "partout.",
+    "d3.k1": "Design 3D",
+    "d3.k2": "Modélisation",
+    "d3.k3": "Formation",
+    "d3.m1": "Outils — <b>CATIA &amp; Blender</b>",
+    "d3.m2": "Focus — <b>Modélisation hard-surface</b>",
+    "d3.lead":
+      "Je modélise avec deux outils : CATIA pour les pièces de précision, " +
+      "Blender pour tout ce qui doit donner l'impression d'être vivant. " +
+      "Voici les pièces auxquelles je reviens toujours.",
+    "d3.f1l": "Outils",
+    "d3.f1v": "CATIA ● Blender",
+    "d3.f2l": "Focus",
+    "d3.f2v": "Modélisation hard-surface",
+    "d3.f3l": "Aussi",
+    "d3.f3v": "Formation des stagiaires aux bases de la 3D",
+    "d3.h2a": "CATIA<br /><span class=\"o\">précision</span>",
+    "d3.copyA":
+      "CATIA, c'est là où j'ai appris la 3D : dimensions exactes, croquis " +
+      "propres, des pièces qui pourraient vraiment être fabriquées. Un " +
+      "couteau de combat, un drone quadricoptère et une étude de cube " +
+      "construite à partir d'un seul profil répété.",
+    "d3.h2b": "Blender<br /><span class=\"o\">personnages</span>",
+    "d3.copyB":
+      "Un petit fantôme, modélisé et façonné sommet par sommet sur Blender. " +
+      "Pièce modeste, mais c'est elle qui m'a le plus appris sur la " +
+      "topologie — bien plus que n'importe quel tuto.",
+    "d3.cap1": "Couteau de combat",
+    "d3.cap2": "Étude de cube imbriqué",
+    "d3.cap3": "Drone quadricoptère",
+    "d3.cap4": "Personnage fantôme",
+    "wp.cap1": "Accueil parents",
+    "wp.cap2": "Mode ramassage en direct",
+    "wp.cap3": "Mes enfants",
+    "wp.cap4": "Lier un enfant",
+    "wp.cap5": "Zones géofence",
+    "wp.cap6": "Journaux de ramassage",
+    "wp.cap7": "Compagnon enseignant",
+    "wp.cap8": "Planche de composants",
+
     "rec.k1": "Design UX/UI",
     "rec.k2": "Concept",
     "rec.m1": "Rôle — <b>Designer UX/UI</b>",
@@ -206,7 +379,7 @@ const DICT = {
     "rec.lead":
       "Recettes Mondiales est un concept d'application de découverte de " +
       "recettes : des plats goûtés et approuvés venus de 195 pays et " +
-      "cultures. Hajar a conçu la landing page, du hero au footer.",
+      "cultures. J'ai conçu la landing page, du hero au footer.",
     "rec.f1l": "Rôle",
     "rec.f1v": "Design UX/UI",
     "rec.f2l": "Livrables",
