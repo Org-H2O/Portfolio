@@ -23,6 +23,14 @@ if (!reduced) {
   // intro tweens the hero SVG name — home page only
   if (document.getElementById("nameSvg")) initIntro({ gsap });
   initWork({ gsap, ScrollTrigger });
+} else {
+  // no intro runs, so the name svg can paint outside its box right away
+  // (the cursor's black circle needs this near the name's edges)
+  const svg = document.getElementById("nameSvg");
+  if (svg) {
+    svg.style.overflow = "visible";
+    svg.dataset.reveal = "on";
+  }
 }
 
 // same-page anchors ride Lenis; subpage nav links (../index.html#…) stay native

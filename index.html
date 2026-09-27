@@ -60,7 +60,8 @@
 
           <!-- outline layer, only visible inside the cursor circle -->
           <g id="holeGroup" clip-path="url(#holeClip)" aria-hidden="true">
-            <rect x="-20" y="-20" width="1048" height="320" fill="#000000" />
+            <!-- oversized so the circle stays black even when it overhangs the name -->
+            <rect x="-3000" y="-3000" width="7000" height="7000" fill="#000000" />
             <g fill="none" stroke="#ff4d00" stroke-width="2.4">
               <text class="name-line" x="4" y="128" font-size="150" textLength="588" lengthAdjust="spacingAndGlyphs">HAJAR</text>
               <text class="name-line" x="4" y="252" font-size="150" textLength="1000" lengthAdjust="spacingAndGlyphs">HADDOUCHE</text>

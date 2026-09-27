@@ -2,6 +2,7 @@
 
 .hero {
   position: relative;
+  overflow: hidden; /* clips the parallaxing backdrop at the section edge */
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -54,6 +55,11 @@
   font-weight: 900;
   font-stretch: 125%;
 }
+
+/* the disc + outline layers must never catch the pointer: the huge
+   black rect paints outside the svg box, and painted svg content is
+   hit-testable — it would keep hover alive around the whole circle */
+#holeGroup { pointer-events: none; }
 
 @media (max-width: 720px) {
   #holeGroup text { stroke-width: 4; }

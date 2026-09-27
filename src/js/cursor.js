@@ -40,6 +40,7 @@ export function initCursor({ gsap }) {
   let hotEl = null;          // element carrying the .is-snapped state
   let snapDist = Infinity;   // mouse distance to it (0 = pointer is on it)
   let snapX = 0, snapY = 0;  // point the circle locks onto
+  let holeR = 0;             // clip-circle radius in SVG units (lerped)
 
   const pt = svg ? svg.createSVGPoint() : null;
 
@@ -122,7 +123,9 @@ export function initCursor({ gsap }) {
     cursor.classList.toggle("is-link", !overName && !!snapEl);
 
     // map screen position -> SVG user units so the clip circle
-    // sits exactly under the cursor ring at any viewport size
+    // sits exactly under the cursor ring at any viewport size.
+    // the disc only exists over the name, and only once the intro
+    // has landed (data-reveal = svg may paint outside its box)
     if (svg && hole) {
       const m = svg.getScreenCTM();
       if (m) {
@@ -131,7 +134,9 @@ export function initCursor({ gsap }) {
         const p = pt.matrixTransform(m.inverse());
         hole.setAttribute("cx", p.x);
         hole.setAttribute("cy", p.y);
-        hole.setAttribute("r", Math.max(0, (size / 2) / m.a));
+        const reveal = overName && svg.dataset.reveal === "on";
+        holeR += ((reveal ? (size / 2) / m.a : 0) - holeR) * 0.2;
+        hole.setAttribute("r", Math.max(0, holeR));
       }
     }
   };
