@@ -1,12 +1,27 @@
 /* Hero: kicker, SVG name (fill + cursor-masked outline), meta row. */
 
 .hero {
+  position: relative;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: calc(4rem + 4vh) var(--gutter) 1.6rem;
 }
+
+/* butterfly backdrop — subtle, melts into the black.
+   To remove: delete the .hero-bg div in index.html, nothing else. */
+.hero-bg {
+  position: absolute !important;
+  inset: 0;
+  background: url("../../assets/hero/butterfly.webp") center 50% / cover no-repeat;
+  filter: brightness(0.8) contrast(0.5);
+  mix-blend-mode: hard-light;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.hero > * { position: relative; } /* keep content above the backdrop */
 
 .kicker {
   display: flex;

@@ -6,6 +6,7 @@ desktop.ini
 # raw source material — only the cleaned copies ship
 # (kept locally for future project pages; ignored to keep the public repo lean)
 assets/*
+!assets/hero/
 !assets/work/
 !assets/projects/
 !assets/about/
