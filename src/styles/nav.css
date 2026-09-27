@@ -34,6 +34,20 @@
 
 .nav-links a sup { color: var(--accent); font-size: 0.68em; margin-right: 0.4em; }
 
+/* EN / FR switch */
+.lang-toggle {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  flex: none;
+}
+
+.lang-toggle i { font-style: normal; color: var(--muted); margin-inline: 0.35em; }
+
+.lang-toggle span { color: var(--muted); transition: color 0.2s ease; }
+.lang-toggle span.on { color: var(--ink); }
+.lang-toggle.is-snapped span { color: var(--accent); }
+
 @media (max-width: 720px) {
   .nav-links { display: none; }
 }

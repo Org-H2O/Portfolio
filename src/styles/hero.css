@@ -58,21 +58,15 @@
   color: var(--muted);
 }
 
+/* arrows inherit their link's color; the stroke thickens the thin glyph */
 .arrow {
   display: inline-block;
-  color: var(--accent);
+  color: inherit;
   font-style: normal;
-  animation: bob 2.2s ease-in-out infinite;
+  -webkit-text-stroke: 1px currentColor;
 }
 
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(4px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .arrow { animation: none; }
-}
+.meta-scroll .arrow { color: var(--accent); }
 
 @media (max-width: 720px) {
   .kicker { gap: 1em; font-size: 0.72rem; }
