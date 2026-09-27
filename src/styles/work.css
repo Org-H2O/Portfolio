@@ -81,6 +81,30 @@
 
 .panel-media img { display: block; height: 100%; width: auto; }
 
+/* paper-stack cover — portrait pieces layered like scattered prints */
+.panel-media--stack {
+  position: relative;
+  height: min(50vh, 520px);
+  aspect-ratio: 10 / 11;
+}
+
+.panel-media--stack img {
+  position: absolute;
+  top: 50%;
+  height: 86%;
+  width: auto;
+}
+
+.panel-media--stack .stack-back {
+  left: 50%;
+  transform: translate(-57%, -49%) rotate(-8deg);
+}
+
+.panel-media--stack .stack-front {
+  left: 50%;
+  transform: translate(-33%, -54%) rotate(2.5deg);
+}
+
 .panel-info {
   display: flex;
   align-items: baseline;
@@ -140,7 +164,7 @@
 @media (max-width: 720px) {
   .work-head { flex-direction: column; align-items: flex-start; }
   .work-controls { align-items: flex-start; }
-  .panel-media { height: 44vh; }
+  .panel-media, .panel-media--stack { height: 44vh; }
 }
 
 /* no-JS-motion fallback: plain horizontal swipe, no pin */

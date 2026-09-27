@@ -1,0 +1,43 @@
+/* Full-screen image preview — flat black overlay, no chrome. */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90; /* above nav, below the custom cursor */
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.95);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-img {
+  display: block;
+  max-width: min(92vw, 1400px);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+}
+
+.lightbox-cap {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.2rem, 4vh, 2.5rem);
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox { transition: none; }
+}

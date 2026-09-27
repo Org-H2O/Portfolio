@@ -114,6 +114,32 @@
   gap: clamp(3.5rem, 9vh, 6.5rem);
 }
 
+/* contact-sheet grid for collections (posters, key art) */
+.p-posters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: clamp(2rem, 4vh, 3rem) clamp(1.25rem, 2.5vw, 2rem);
+}
+
+/* category groups stacked vertically inside a collection page */
+.p-group + .p-group { margin-top: clamp(3.5rem, 9vh, 6.5rem); }
+
+.p-group-title {
+  font-weight: 800;
+  font-stretch: 125%;
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  text-transform: uppercase;
+  margin-bottom: clamp(1.5rem, 3vh, 2.25rem);
+}
+
+.p-group-title i {
+  font-style: normal;
+  color: var(--accent);
+  font-size: 0.6em;
+  vertical-align: 0.35em;
+  margin-left: 0.5em;
+}
+
 .shot-img {
   display: block;
   width: min(100%, 1080px); /* native capture width — never upscaled */
